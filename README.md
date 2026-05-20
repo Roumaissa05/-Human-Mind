@@ -116,10 +116,9 @@ Made with creativity and passion by:
 
 ---
 
-# 📸 Preview
+## Preview
 
-Add screenshots here after uploading the project.
-
+![Website Preview](images/preview.jpg)
 ---
 
 # 🌐 Live Demo
