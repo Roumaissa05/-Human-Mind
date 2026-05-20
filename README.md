@@ -123,11 +123,10 @@ Add screenshots here after uploading the project.
 ---
 
 # 🌐 Live Demo
-
-Add your deployed website link here after publishing.
+(https://hu-mind.netlify.app)
 
 ---
 
 # 📜 License
 
-This project is open for learning and educational purposes.
+(images/preview.jpg)
