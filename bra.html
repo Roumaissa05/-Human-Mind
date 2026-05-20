@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عقل الإنسان | كيف يعمل، يتأثر، ويتبرمج | Human Mind Guide</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border-radius: 10px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #00b4db;
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #00b4db;
+        }
+
+        .lang-switch {
+            background: rgba(0, 180, 219, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #00b4db;
+            color: #00b4db;
+        }
+
+        .lang-switch:hover {
+            background: #00b4db;
+            color: #0f0c29;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 180, 219, 0.15), rgba(15, 12, 41, 0.95));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🧠';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.03;
+            bottom: -5rem;
+            right: -5rem;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #00b4db;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00b4db;
+            color: #00b4db;
+            margin-right: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: #00b4db;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 180, 219, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border-radius: 3px;
+        }
+
+        .section-title i {
+            margin-left: 12px;
+            color: #00b4db;
+        }
+
+        /* Cards Grid */
+        .grid-2, .grid-3, .grid-4 {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #00b4db;
+            box-shadow: 0 15px 35px rgba(0, 180, 219, 0.2);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #00b4db;
+        }
+
+        .card p {
+            color: #bbb;
+            line-height: 1.7;
+        }
+
+        /* Brain Illustration */
+        .brain-section {
+            background: linear-gradient(135deg, #0a0820, #151240);
+            border-radius: 30px;
+            margin-top: 2rem;
+            padding: 2rem;
+        }
+
+        .brain-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .brain-visual {
+            flex: 1;
+            text-align: center;
+        }
+
+        .brain-visual i {
+            font-size: 12rem;
+            color: #00b4db;
+            opacity: 0.8;
+        }
+
+        .brain-text {
+            flex: 1;
+        }
+
+        .brain-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #00b4db;
+        }
+
+        .brain-text ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .brain-text li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brain-text li i {
+            color: #00b4db;
+        }
+
+        /* Programming steps */
+        .programming-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #00b4db;
+        }
+
+        /* Habit loop */
+        .habit-loop {
+            background: linear-gradient(135deg, #0f0c29, #1a1747);
+            border-radius: 30px;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .loop-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .loop-item {
+            background: rgba(0, 180, 219, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .loop-item i {
+            font-size: 2rem;
+            color: #00b4db;
+            margin-bottom: 0.5rem;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #00b4db;
+            align-self: center;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .testimonial i {
+            font-size: 2rem;
+            color: #00b4db;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial h4 {
+            color: #00b4db;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0820;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #00b4db;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            color: #00b4db;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .signature i {
+            margin: 0 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #0f0c29;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .loop-items .arrow {
+                display: none;
+            }
+
+            .brain-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brain-text li {
+                justify-content: center;
+            }
+        }
+
+        /* English language support - when lang=en body gets ltr */
+        body.lang-en {
+            direction: ltr;
+            text-align: left;
+        }
+        body.lang-en .section-title i {
+            margin-right: 12px;
+            margin-left: 0;
+        }
+        body.lang-en .card-icon {
+            margin-right: 0;
+        }
+        body.lang-en .step {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            body.lang-en .step {
+                flex-direction: column;
+            }
+        }
+        body.lang-en .brain-text li {
+            justify-content: flex-start;
+        }
+        .lang-text-ar, .lang-text-en {
+            transition: display 0.2s;
+        }
+        body:not(.lang-en) .lang-text-en {
+            display: none;
+        }
+        body.lang-en .lang-text-ar {
+            display: none;
+        }
+        body.lang-en .lang-text-en {
+            display: inline-block;
+        }
+        .inline-lang {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-brain"></i>
+                <span class="lang-text-ar">عقل الإنسان</span>
+                <span class="lang-text-en">Human Mind</span>
+            </a>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#how-it-works"><span class="lang-text-ar">كيف يعمل</span><span class="lang-text-en">How It Works</span></a></li>
+                <li><a href="#influences"><span class="lang-text-ar">التأثيرات</span><span class="lang-text-en">Influences</span></a></li>
+                <li><a href="#programming"><span class="lang-text-ar">البرمجة</span><span class="lang-text-en">Programming</span></a></li>
+                <li><a href="#habits"><span class="lang-text-ar">العادات</span><span class="lang-text-en">Habits</span></a></li>
+                <li><a href="#dreams"><span class="lang-text-ar">تحقيق الأحلام</span><span class="lang-text-en">Dreams</span></a></li>
+            </ul>
+            <div class="lang-switch" id="langToggle">🇬🇧 English</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>🧠 <span class="lang-text-ar">عقل الإنسان</span><span class="lang-text-en">The Human Mind</span></h1>
+            <div class="subtitle"><span class="lang-text-ar">كيف يعمل • كيف يتأثر • كيف يتبرمج</span><span class="lang-text-en">How it works • How it's influenced • How it's programmed</span></div>
+            <p><span class="lang-text-ar">رحلة استكشافية في أعظم جهاز عرفه التاريخ. افهم عقلك لتتحكم به، لا أن يتحكم بك.</span><span class="lang-text-en">An exploratory journey into the greatest device known to history. Understand your mind to control it, not to be controlled by it.</span></p>
+            <div>
+                <a href="#how-it-works" class="btn"><span class="lang-text-ar">ابدأ الرحلة</span><span class="lang-text-en">Start Journey</span></a>
+                <a href="#habits" class="btn btn-outline"><span class="lang-text-ar">ابنِ عاداتك</span><span class="lang-text-en">Build Habits</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <h2 class="section-title"><i class="fas fa-microchip"></i> <span class="lang-text-ar">كيف يعمل العقل؟</span><span class="lang-text-en">How Does The Mind Work?</span></h2>
+        <div class="grid-2">
+            <div class="card"><div class="card-icon"><i class="fas fa-lightbulb"></i></div><h3><span class="lang-text-ar">العقل الواعي (الوعي)</span><span class="lang-text-en">Conscious Mind</span></h3><p><span class="lang-text-ar">يمثل 10% فقط من قدراتك العقلية. المسؤول عن التفكير المنطقي، اتخاذ القرارات، التحليل، والتركيز. هنا تتعلم المعلومات الجديدة وتخطط لأهدافك.</span><span class="lang-text-en">Represents only 10% of your mental capacity. Responsible for logical thinking, decision making, analysis, and focus. Here you learn new information and plan your goals.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-water"></i></div><h3><span class="lang-text-ar">العقل الباطن (اللاوعي)</span><span class="lang-text-en">Subconscious Mind</span></h3><p><span class="lang-text-ar">يمثل 90% المتبقي. المخزن العملاق للمعلومات، المعتقدات، والعادات. يعمل 24/7 دون توقف، ولا يفرق بين الحقيقة والخيال.</span><span class="lang-text-en">Represents the remaining 90%. The giant storage for information, beliefs, and habits. Works 24/7 nonstop, doesn't distinguish between reality and imagination.</span></p></div>
+        </div>
+        <div class="brain-section"><div class="brain-container"><div class="brain-visual"><i class="fas fa-brain"></i></div><div class="brain-text"><h3><span class="lang-text-ar">الحوار بين الوعي واللاوعي</span><span class="lang-text-en">Dialogue Between Conscious & Subconscious</span></h3><ul><li><i class="fas fa-arrow-right"></i> <span class="lang-text-ar">الوعي يضع الهدف ← اللاوعي يعمل على تحقيقه</span><span class="lang-text-en">Conscious sets goal → Subconscious works to achieve it</span></li><li><i class="fas fa-arrow-right"></i> <span class="lang-text-ar">الوعي يتعلم مهارة جديدة ← اللاوعي يحولها لعادة</span><span class="lang-text-en">Conscious learns new skill → Subconscious turns into habit</span></li><li><i class="fas fa-arrow-right"></i> <span class="lang-text-ar">اللاوعي يتحكم في 95% من سلوكياتك اليومية</span><span class="lang-text-en">Subconscious controls 95% of your daily behaviors</span></li></ul></div></div></div>
+    </section>
+
+    <!-- Influences -->
+    <section id="influences" style="background: rgba(0, 0, 0, 0.2);">
+        <h2 class="section-title"><i class="fas fa-chalkboard-user"></i> <span class="lang-text-ar">كيف يتأثر العقل؟</span><span class="lang-text-en">How Is The Mind Influenced?</span></h2>
+        <div class="grid-3">
+            <div class="card"><div class="card-icon"><i class="fas fa-comments"></i></div><h3><span class="lang-text-ar">تأثير الأفكار</span><span class="lang-text-en">Power of Thoughts</span></h3><p><span class="lang-text-ar">الفكرة الواحدة إذا تكررت تصبح اعتقاداً. الأفكار السلبية تخلق معتقدات محدودة، والإيجابية تبني ثقة.</span><span class="lang-text-en">A single idea repeated becomes a belief. Negative thoughts create limiting beliefs, positive ones build confidence.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-users"></i></div><h3><span class="lang-text-ar">تأثير المحيط</span><span class="lang-text-en">Environment Effect</span></h3><p><span class="lang-text-ar">أنت متوسط الأشخاص الخمسة الأكثر قضاءً للوقت معهم. اختر محيطك بعناية.</span><span class="lang-text-en">You are the average of the five people you spend the most time with. Choose your circle carefully.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-film"></i></div><h3><span class="lang-text-ar">تأثير الإعلام</span><span class="lang-text-en">Media Impact</span></h3><p><span class="lang-text-ar">ما تراه وتسمعه يومياً يبرمج عقلك دون وعي. كن واعياً لما تستهلكه.</span><span class="lang-text-en">What you see and hear daily programs your mind unconsciously. Be mindful of your consumption.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-clock"></i></div><h3><span class="lang-text-ar">تأثير العادات</span><span class="lang-text-en">Habits Impact</span></h3><p><span class="lang-text-ar">ما تفعله كل يوم يحدد من تكون. 40% من سلوكياتك اليومية هي عادات تلقائية.</span><span class="lang-text-en">What you do every day defines who you are. 40% of daily behaviors are automatic habits.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-heartbeat"></i></div><h3><span class="lang-text-ar">تأثير المشاعر</span><span class="lang-text-en">Emotional Impact</span></h3><p><span class="lang-text-ar">المشاعر القوية تخلق مسارات عصبية أقوى. التجارب المؤثرة لا تُنسى بسرعة.</span><span class="lang-text-en">Strong emotions create stronger neural pathways. Impactful experiences are not forgotten quickly.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-bed"></i></div><h3><span class="lang-text-ar">النوم والتغذية</span><span class="lang-text-en">Sleep & Nutrition</span></h3><p><span class="lang-text-ar">العقل يحتاج للنوم ليعيد ترتيب المعلومات. التغذية تؤثر على كيمياء الدماغ.</span><span class="lang-text-en">Mind needs sleep to reorganize information. Nutrition affects brain chemistry.</span></p></div>
+        </div>
+    </section>
+
+    <!-- Programming Section -->
+    <section id="programming">
+        <h2 class="section-title"><i class="fas fa-code"></i> <span class="lang-text-ar">كيف يتبرمج العقل؟</span><span class="lang-text-en">How Is The Mind Programmed?</span></h2>
+        <div class="programming-steps">
+            <div class="step"><div class="step-number">1</div><div class="step-content"><h4><span class="lang-text-ar">التكرار المستمر</span><span class="lang-text-en">Consistent Repetition</span></h4><p><span class="lang-text-ar">أي سلوك أو فكرة تكررها تصبح تلقائية. التكرار يخلق مسارات عصبية جديدة.</span><span class="lang-text-en">Any behavior or thought you repeat becomes automatic. Repetition creates new neural pathways.</span></p></div></div>
+            <div class="step"><div class="step-number">2</div><div class="step-content"><h4><span class="lang-text-ar">التصور والتخيل</span><span class="lang-text-en">Visualization</span></h4><p><span class="lang-text-ar">العقل الباطن لا يفرق بين التجربة الحقيقية والمتخيلة. تخيل نجاحك يومياً.</span><span class="lang-text-en">Subconscious doesn't distinguish between real and imagined experience. Visualize your success daily.</span></p></div></div>
+            <div class="step"><div class="step-number">3</div><div class="step-content"><h4><span class="lang-text-ar">التأكيدات الإيجابية</span><span class="lang-text-en">Positive Affirmations</span></h4><p><span class="lang-text-ar">عبارات إيجابية تكررها لنفسك. عقلك يبحث عن أدلة تثبتها.</span><span class="lang-text-en">Positive statements you repeat to yourself. Your mind seeks evidence to prove them.</span></p></div></div>
+            <div class="step"><div class="step-number">4</div><div class="step-content"><h4><span class="lang-text-ar">التجارب العاطفية القوية</span><span class="lang-text-en">Emotional Experiences</span></h4><p><span class="lang-text-ar">المواقف المصحوبة بمشاعر قوية تبرمج العقل بسرعة كبيرة.</span><span class="lang-text-en">Situations accompanied by strong emotions program the mind very quickly.</span></p></div></div>
+        </div>
+    </section>
+
+    <!-- Habits & Dreams -->
+    <section id="habits" style="background: rgba(0, 0, 0, 0.2);">
+        <h2 class="section-title"><i class="fas fa-chart-simple"></i> <span class="lang-text-ar">بناء عادات إيجابية</span><span class="lang-text-en">Building Positive Habits</span></h2>
+        <div class="habit-loop"><h3 style="color:#00b4db"><span class="lang-text-ar">حلقة العادة</span><span class="lang-text-en">The Habit Loop</span></h3><div class="loop-items"><div class="loop-item"><i class="fas fa-bell"></i><h4><span class="lang-text-ar">المحفز</span><span class="lang-text-en">Cue</span></h4></div><div class="arrow"><i class="fas fa-arrow-left"></i></div><div class="loop-item"><i class="fas fa-person-walking"></i><h4><span class="lang-text-ar">الروتين</span><span class="lang-text-en">Routine</span></h4></div><div class="arrow"><i class="fas fa-arrow-left"></i></div><div class="loop-item"><i class="fas fa-gift"></i><h4><span class="lang-text-ar">المكافأة</span><span class="lang-text-en">Reward</span></h4></div></div><p><span class="lang-text-ar">لتغيير عادة، غير الروتين لكن احتفظ بنفس المحفز والمكافأة.</span><span class="lang-text-en">To change a habit, change the routine but keep the same cue and reward.</span></p></div>
+    </section>
+
+    <section id="dreams">
+        <h2 class="section-title"><i class="fas fa-rocket"></i> <span class="lang-text-ar">استغل قوة عقلك لتحقيق أحلامك</span><span class="lang-text-en">Harness Your Mind Power to Achieve Dreams</span></h2>
+        <div class="grid-3">
+            <div class="card"><div class="card-icon"><i class="fas fa-bullseye"></i></div><h3><span class="lang-text-ar">حدد هدفك بدقة</span><span class="lang-text-en">Set Clear Goals</span></h3><p><span class="lang-text-ar">استخدم تقنية SMART: محدد، قابل للقياس، قابل للتحقيق، ذو صلة، محدد بزمن.</span><span class="lang-text-en">Use SMART: Specific, Measurable, Achievable, Relevant, Time-bound.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-eye"></i></div><h3><span class="lang-text-ar">التصور الإبداعي</span><span class="lang-text-en">Creative Visualization</span></h3><p><span class="lang-text-ar">تخيل نفسك وقد حققت حلمك باستخدام كل حواسك يومياً.</span><span class="lang-text-en">Imagine yourself achieving your dream using all your senses daily.</span></p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-language"></i></div><h3><span class="lang-text-ar">غير لغتك الداخلية</span><span class="lang-text-en">Change Inner Language</span></h3><p><span class="lang-text-ar">استبدل "لا أستطيع" بـ "كيف يمكنني؟" تحدث مع نفسك كمتحدث تحفيزي.</span><span class="lang-text-en">Replace "I can't" with "How can I?" Talk to yourself as a motivator.</span></p></div>
+        </div>
+    </section>
+
+    <!-- Footer with Signature -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section"><h4><i class="fas fa-brain"></i> <span class="lang-text-ar">عقل الإنسان</span><span class="lang-text-en">Human Mind</span></h4><p><span class="lang-text-ar">دليلك الشامل لفهم أعظم جهاز. تعلم كيف تعمل عقلك.</span><span class="lang-text-en">Your complete guide to understanding the greatest device. Learn how your mind works.</span></p></div>
+            <div class="footer-section"><h4><span class="lang-text-ar">روابط</span><span class="lang-text-en">Links</span></h4><ul><li><span class="lang-text-ar">كيف يعمل العقل</span><span class="lang-text-en">How Mind Works</span></li><li><span class="lang-text-ar">العادات الإيجابية</span><span class="lang-text-en">Positive Habits</span></li><li><span class="lang-text-ar">تحقيق الأحلام</span><span class="lang-text-en">Dream Achievement</span></li></ul></div>
+            <div class="footer-section"><h4><span class="lang-text-ar">إلهام</span><span class="lang-text-en">Inspiration</span></h4><p><span class="lang-text-ar">"العقل هو كل شيء، ما تفكر فيه تصبح عليه."</span><span class="lang-text-en">"The mind is everything; what you think you become."</span></p></div>
+        </div>
+        <div class="signature">
+            <i class="fas fa-pen-fancy"></i> Made by <strong style="color:#fff;">roumaissa</strong> <i class="fas fa-heart" style="color:#ff6b6b;"></i> <span class="lang-text-ar">بتوقيعي</span><span class="lang-text-en">Signed</span> : roumaissa
+        </div>
+        <div class="footer-bottom"><span class="lang-text-ar">© 2026 | دليل عقل الإنسان الشامل - المعرفة قوة، وفهم عقلك هو أعظم قوة</span><span class="lang-text-en">© 2026 | The Complete Human Mind Guide - Knowledge is power, understanding your mind is the greatest power</span></div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) { target.scrollIntoView({ behavior: 'smooth' }); navLinks.classList.remove('active'); }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            document.querySelector('.navbar').style.background = window.scrollY > 100 ? 'rgba(15, 12, 41, 0.98)' : 'rgba(15, 12, 41, 0.95)';
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section, .grid-2, .grid-3, .programming-steps, .habit-loop').forEach(el => {
+            if(!el.closest('section')) { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = 'all 0.6s ease'; observer.observe(el); }
+        });
+        document.querySelectorAll('section').forEach(section => { section.style.opacity = '0'; section.style.transform = 'translateY(30px)'; section.style.transition = 'all 0.6s ease'; observer.observe(section); });
+        
+        // Bilingual Toggle Logic
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'ar';
+        function setLanguage(lang) {
+            const body = document.body;
+            if(lang === 'en') {
+                body.classList.add('lang-en');
+                langToggle.innerHTML = '🇸🇦 العربية';
+                currentLang = 'en';
+            } else {
+                body.classList.remove('lang-en');
+                langToggle.innerHTML = '🇬🇧 English';
+                currentLang = 'ar';
+            }
+            localStorage.setItem('mindLang', lang);
+        }
+        langToggle.addEventListener('click', () => {
+            if(currentLang === 'ar') setLanguage('en');
+            else setLanguage('ar');
+        });
+        const savedLang = localStorage.getItem('mindLang');
+        if(savedLang === 'en') setLanguage('en');
+        else setLanguage('ar');
+    </script>
+</body>
+</html>
