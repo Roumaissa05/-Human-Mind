@@ -128,4 +128,4 @@ Made with creativity and passion by:
 
 # 📜 License
 
-(images/preview.jpg)
+This project is open for learning and educational purposes.
